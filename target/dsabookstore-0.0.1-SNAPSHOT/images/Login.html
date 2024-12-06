@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://localhost:8080/dsafinal/login.html?error=invalid_credentials -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="./Login_files/login.css">
+  <link rel="stylesheet" href="./Login_files/all.min.css">
+  <style>
+   
+  </style>
+  <script>
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const error = params.get("error");
+      if (error === "invalid_credentials") {
+        const errorMessage = document.querySelector(".error-message");
+        errorMessage.style.display = "block";
+        errorMessage.textContent = "Invalid email/username or password.";
+      }
+    };
+  </script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1209.0" data-gr-ext-installed="">
+  <div class="wrapper">
+    <div class="title"><span>Login Form</span></div>
+    <form action="http://localhost:8080/dsafinal/LoginServlet" method="POST">
+      <div class="row">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="Email or Username" required="" class="emailOrUserName" name="emailOrUserName">
+        <!-- Error message for email/username -->
+        <div class="error-message" style="display: block;">Invalid email/username or password.</div>
+      </div>
+      <div class="row">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Password" required="" class="passwordLogin" name="passwordLogin">
+        <!-- Error message for password -->
+        <div class="error-message"></div>
+      </div>
+      <div class="pass"><a href="http://localhost:8080/dsafinal/login.html?error=invalid_credentials#">Forgot password?</a></div>
+      <div class="row button">
+        <input type="submit" value="Login">
+      </div>
+      <div class="signup-link">Not a member? <a href="http://localhost:8080/dsafinal/signup.html">Signup now</a></div>
+    </form>
+  </div>
+  <div class="home-link">
+    <p><a href="http://localhost:8080/dsafinal/index.html">Back to Home</a></p>
+  </div>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
