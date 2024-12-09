@@ -15,7 +15,7 @@
   </head>
   <body>
   	  <div class="home-link">
-    	<p><a href="index.jsp">Back to Home</a></p>
+    	<p><a href="home">Back to Home</a></p>
   	</div>
     <div class="container">
       <header>Signup Form</header>

@@ -120,7 +120,7 @@
                                         onclick="showAddressBook()">
                                         Address Book
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action border-0">Logout</a>
+                                    <a href="LogoutServlet" class="list-group-item list-group-item-action border-0">Logout</a>
                                 </div>
                             </div>
                         </div>
