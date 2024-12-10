@@ -48,7 +48,7 @@
     </form>
   </div>
   <div class="home-link">
-    <p><a href="index.jsp">Back to Home</a></p>
+    <p><a href="home">Back to Home</a></p>
   </div>
 </body>
 </html>

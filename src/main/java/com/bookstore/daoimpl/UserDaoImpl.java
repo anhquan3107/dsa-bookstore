@@ -103,10 +103,10 @@ public class UserDaoImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		DBUtil.closeConnection(con);
 		DBUtil.closeConnection(ps);
 		DBUtil.closeConnection(rs);
+		DBUtil.closeConnection(con);
+
 		return loginSuccess;
 	}
 
@@ -135,6 +135,7 @@ public class UserDaoImpl implements UserDao {
 				user.setPassword(rs.getString("password"));
 				user.setPhone(rs.getString("phone"));
 				user.setAddress(rs.getString("address"));
+				user.setUserID(rs.getString("user_ID"));
 
 				return user;
 			}
@@ -143,12 +144,46 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 
-		DBUtil.closeConnection(con);
 		DBUtil.closeConnection(ps);
 		DBUtil.closeConnection(rs);
+		DBUtil.closeConnection(con);
 
 		return user;
 	}
+
+
+	@Override
+	public boolean updateUserIntoDB(Users user) {
+	    String updateQuery = "UPDATE BookUsers SET fullName = ?, email = ?, phone = ?, address = ? WHERE user_ID = ?";
+	    Connection connection = null;
+	    PreparedStatement ps = null;
+
+	    try {
+	        connection = DBUtil.openConnection();
+	        ps = connection.prepareStatement(updateQuery);
+	        ps.setString(1, user.getFullname());
+	        ps.setString(2, user.getEmail());
+	        ps.setString(3, user.getPhone());
+	        ps.setString(4, user.getAddress());
+	        ps.setString(5, user.getUserID());
+
+	        int rowsUpdated = ps.executeUpdate();
+	        System.out.println("Rows updated in database: " + rowsUpdated); 
+
+	        return rowsUpdated > 0;
+
+	    } catch (SQLException e) {
+	        System.err.println("Database update failed: " + e.getMessage());
+	        e.printStackTrace();
+	        return false;
+
+	    } finally {
+			DBUtil.closeConnection(ps);
+			DBUtil.closeConnection(connection);	   
+		}
+	}
+
+	
 
 
 }

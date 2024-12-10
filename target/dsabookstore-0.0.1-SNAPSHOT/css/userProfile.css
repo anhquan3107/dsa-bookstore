@@ -1,5 +1,9 @@
+
+body {
+    background-color: #f3f2ec !important;
+}
 .list-group-item.active {
-    background: #ffc107;
+    background: #c7b198;
 }
 /* end common class */
 .top-status ul {
@@ -26,7 +30,7 @@
 }
 .top-status ul li.active {
     border-color: #06C167;
-    box-shadow: 1px 1px 20px 1px #ffc107 inset;
+    box-shadow: 1px 1px 20px 1px #c7b198 inset;
 }
 /* end top status */
 
@@ -81,5 +85,17 @@ ul.timeline > li.active:before {
     color: #fff;
     font-size: 30px;
     border: 2px solid var(--ogenix-primary);
+}
+ .btn-custom {
+        background-color: #c7b198; /* Custom color */
+        color: white;             /* Text color */
+        border: none;             /* Remove border */
+    }
+    .btn-custom:hover {
+        background-color: #9e8568; /* Hover color */
+    }
+    
+    .mt-5, .my-5 {
+    margin-top: 10rem !important;
 }
 /* end timeline */

@@ -55,7 +55,7 @@
 					    <div class="right-element">
 					        <!-- Check if the user is logged in -->
 					        <c:choose>
-					            <c:when test="${sessionScope.user != null}">
+					            <c:when test="${sessionScope.userinfo != null}">
 					                <!-- User is logged in -->
 					                <a href="userProfile.jsp" class="user-account for-buy">
 					                    <i class="icon icon-user"></i>

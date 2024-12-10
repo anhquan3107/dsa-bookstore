@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -16,10 +17,9 @@
     <link rel="stylesheet" href="css/userProfile.css" />
     <style>
         .list-group-item.active {
-    background: #06C167 !important;
 }
 .bg-warning {
-    background: #06C167 !important;
+    background: #f3f2ec !important;
 }
 .modal-content {
         background-color: #fefefe;
@@ -104,11 +104,20 @@
                                 <div class="d-flex flex-column align-items-center text-center">
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtbEsykx-0fhTred6UwHDYtMFd2UgTJCG4gaklT1dx4suRO4_n5LJr4Gg28kquSX5fpNo&usqp=CAU" alt="Admin"
                                         class="rounded-circle p-1 bg-warning" width="110">
-                                    <div class="mt-3">
-                                        <h4>Jyoti</h4>
-                                        <p class="text-secondary mb-1">+91 7493658737</p>
-                                        <p class="text-muted font-size-sm">Delhi, NCR</p>
-                                    </div>
+									    <div class="mt-3">
+									        <c:choose>
+									            <c:when test="${not empty sessionScope.userinfo}">
+									                <h4>${sessionScope.userinfo.username}</h4>
+									                <p class="text-secondary mb-1">${sessionScope.userinfo.phone}</p>
+									                <p class="text-muted font-size-sm">${sessionScope.userinfo.address}</p>
+									            </c:when>
+									            <c:otherwise>
+									                <h4>Guest</h4>
+									                <p class="text-secondary mb-1">N/A</p>
+									                <p class="text-muted font-size-sm">N/A</p>
+									            </c:otherwise>
+									        </c:choose>
+									    </div>
                                 </div>
                                 <div class="list-group list-group-flush text-center mt-4">
                                     <a href="#" class="list-group-item list-group-item-action border-0 " onclick="showProfileDetails()">
@@ -120,7 +129,7 @@
                                         onclick="showAddressBook()">
                                         Address Book
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action border-0">Logout</a>
+                                    <a href="LogoutServlet" class="list-group-item list-group-item-action border-0">Logout</a>
                                 </div>
                             </div>
                         </div>
@@ -479,17 +488,21 @@
                         <div class="card-body">
                             <div class="profile-info">
                                 <h5>Profile Information</h5>
-                                <p><strong>Name:</strong> Jyoti</p>
-                                <p><strong>Email Address:</strong> jyoti@gmail.com</p>
-                                <p><strong>Contact:</strong> +91 7493658737</p>
-                                <p><strong>Date of Birth:</strong> 02-03-1999</p>
-                                <p><strong>Gender:</strong> Female</p>
-                                <p><strong>City:</strong> Delhi, NCR</p>
-                                <p><strong>Height:</strong> 5.4</p>
-                                <p><strong>Weight:</strong> 50</p>
-                                <p><strong>Goal:</strong> Hair & Skin</p>
-                                <p><strong>Preference:</strong> Pure Vegitarian</p>
-                                <p><strong>Role:</strong> User</p>
+                                <c:choose>
+	                				<c:when test="${not empty sessionScope.userinfo}">
+	                                <p><strong>Name:&nbsp</strong>${sessionScope.userinfo.fullname}</p>
+	                                <p><strong>Email Address:&nbsp</strong> ${sessionScope.userinfo.email}</p>
+	                                <p><strong>Contact:&nbsp</strong>${sessionScope.userinfo.phone}</p>
+	                                <p><strong>Address:&nbsp</strong>${sessionScope.userinfo.address}</p>
+	                                <p><strong>Role:&nbsp</strong>User</p>
+	                                 <form action="UpdateProfileServlet" method="get">
+                        					<button type="submit" class="btn btn-custom mt-3">Update Info</button>
+                   					 </form>
+	                                </c:when>
+                                <c:otherwise>
+                                	<p>No profile details available. Please log in.</p>
+                                </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>

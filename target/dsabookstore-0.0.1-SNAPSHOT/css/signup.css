@@ -81,12 +81,12 @@ form .input-field {
   color: #fff;
   font-size: 16px;
   font-weight: 400;
-  background-color: #4070f4;
+  background-color: #c7b198;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .button input:hover {
-  background-color: #0e4bf1;
+  background-color: #9e8568;
 }
 .already-member {
   margin-top: 20px;
@@ -96,7 +96,7 @@ form .input-field {
 }
 
 .already-member a {
-  color: #007bff;
+  color: #c7b198;
   text-decoration: none;
   font-weight: bold;
 }
@@ -114,7 +114,7 @@ form .input-field {
 }
 
 .home-link a {
-  color: #007bff;
+  color: #c7b198;
   text-decoration: none;
 }
 
