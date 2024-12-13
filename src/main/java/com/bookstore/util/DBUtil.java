@@ -16,8 +16,8 @@ public class DBUtil {
         	if(connection == null || connection.isClosed()) {
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		        String url = "jdbc:sqlserver://localhost:1433;databaseName=bookstore;encrypt=false;trustServerCertificate=false;";
-		        String user = "sa";
-		        String password = "anhquan3107";
+		        String user = "SA";
+		        String password = "AnhQuan@310722";
 		        connection = DriverManager.getConnection(url, user, password);
         	}
 		} catch (SQLException | ClassNotFoundException e) {

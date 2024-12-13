@@ -64,4 +64,22 @@ public class BookDaoImpl implements BookDao {
 
 	        return allBooks;
 	}
+	
+	public double getBookPrice(String bookID) {
+        double bookPrice = 0.0;
+        String query = "SELECT price FROM Books WHERE book_ID = ?"; 
+
+        try (Connection con = DBUtil.openConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setString(1, bookID);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                bookPrice = rs.getDouble("price");             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return bookPrice;
+    }
 }

@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<title>BookSaw - Free Book Store HTML CSS Template</title>
+	<title>DSA Bookstore</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,47 +35,54 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="social-links">
-							<ul>
-							
-								<li>
-									<a href="#"><i class="icon icon-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-youtube-play"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-behance-square"></i></a>
-								</li>
-							</ul>
+
 						</div><!--social-links-->
 					</div>
 					<div class="col-md-6">
 					    <div class="right-element">
 					        <!-- Check if the user is logged in -->
-					        <c:choose>
-					            <c:when test="${sessionScope.userinfo != null}">
-					                <!-- User is logged in -->
-					                <a href="userProfile.jsp" class="user-account for-buy">
-					                    <i class="icon icon-user"></i>
-					                    <span>Account</span>
-					                </a>
-					            </c:when>
-					            <c:otherwise>
-					                <!-- User is not logged in -->
-					                <a href="login.jsp" class="user-account for-buy">
-					                    <i class="icon icon-user"></i>
-					                    <span>Account</span>
-					                </a>
-					            </c:otherwise>
-					        </c:choose>
-					
-					        <a href="checkout.jsp" class="cart for-buy">
-					            <i class="icon icon-clipboard"></i>
-					            <span>Cart: (0 $)</span>
-					        </a>
+							<c:choose>
+							    <c:when test="${sessionScope.userinfo != null}">
+							        <!-- User is logged in -->
+							        <a href="userProfile.jsp" class="user-account for-buy">
+							            <i class="icon icon-user"></i>
+							            <span>Account</span>
+							        </a>
+							    </c:when>
+							    <c:otherwise>
+							        <!-- User is not logged in -->
+							        <a href="login.jsp" class="user-account for-buy">
+							            <i class="icon icon-user"></i>
+							            <span>Account</span>
+							        </a>
+							    </c:otherwise>
+							</c:choose>
+					<c:choose>
+                <c:when test="${not empty sessionScope.userinfo}">
+                    <!-- User is logged in, show cart -->
+                    <a href="cart.jsp" class="cart for-buy">
+                        <i class="icon icon-clipboard"></i>
+                        <span id="cartInfo">
+                            Cart: 
+                            <c:if test="${not empty sessionScope.cartTotalItems}">
+                                (${sessionScope.cartTotalItems} items - 
+                                <fmt:formatNumber value="${sessionScope.cartTotalPrice}" type="currency" />
+                                )
+                            </c:if>
+                            <c:if test="${empty sessionScope.cartTotalItems}">
+                                (0 items - $0.00)
+                            </c:if>
+                        </span>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <!-- User is not logged in -->
+                    <a href="login.jsp" class="cart for-buy">
+                        <i class="icon icon-clipboard"></i>
+                        <span>Please log in to view your cart.</span>
+                    </a>
+                </c:otherwise>
+            </c:choose>							
 					
 					        <div class="action-menu">
 					            <div class="search-bar">
@@ -112,27 +120,9 @@
 							<div class="main-menu stellarnav">
 								<ul class="menu-list">
 									<li class="menu-item active"><a href="#home">Home</a></li>
-									<li class="menu-item has-sub">
-										<a href="#pages" class="nav-link">Pages</a>
-
-										<ul>
-											<li class="active"><a href="index.html">Home</a></li>
-											<li><a href="index.html">About</a></li>
-											<li><a href="index.html">Styles</a></li>
-											<li><a href="index.html">Blog</a></li>
-											<li><a href="index.html">Post Single</a></li>
-											<li><a href="index.html">Our Store</a></li>
-											<li><a href="index.html">Product Single</a></li>
-											<li><a href="index.html">Contact</a></li>
-											<li><a href="index.html">Thank You</a></li>
-										</ul>
-
-									</li>
 									<li class="menu-item"><a href="#featured-books" class="nav-link">Featured</a></li>
 									<li class="menu-item"><a href="#popular-books" class="nav-link">Popular</a></li>
 									<li class="menu-item"><a href="#special-offer" class="nav-link">Offer</a></li>
-									<li class="menu-item"><a href="#latest-blog" class="nav-link">Articles</a></li>
-									<li class="menu-item"><a href="#download-app" class="nav-link">Download App</a></li>
 								</ul>
 
 								<div class="hamburger">
@@ -187,25 +177,6 @@
     </section>
 
 
-
-	<section id="client-holder" data-aos="fade-up">
-		<div class="container">
-			<div class="row">
-				<div class="inner-content">
-					<div class="logo-wrap">
-						<div class="grid">
-							<a href="#"><img src="images/client-image1.png" alt="client"></a>
-							<a href="#"><img src="images/client-image2.png" alt="client"></a>
-							<a href="#"><img src="images/client-image3.png" alt="client"></a>
-							<a href="#"><img src="images/client-image4.png" alt="client"></a>
-							<a href="#"><img src="images/client-image5.png" alt="client"></a>
-						</div>
-					</div><!--image-holder-->
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<section id="featured-books" class="py-5 my-5">
 		<div class="container">
 			<div class="row">
@@ -250,7 +221,7 @@
 				<div class="col-md-12">
 
 					<div class="btn-wrap align-right">
-						<a href="#" class="btn-accent-arrow">View all products <i
+						<a href="#popular-books" class="btn-accent-arrow">View all products <i
 								class="icon icon-ns-arrow-right"></i></a>
 					</div>
 
@@ -311,7 +282,8 @@
                                 <div class="product-item">
                                     <figure class="product-style">
                                         <img src="${book.bookImage}" alt="Books" class="product-item">
-                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+                                        <button type="button" class="add-to-cart" data-book-title="${book.title}"  data-book-price="${book.price}"
+                                        data-book-id="${book.bookId}">>Add to Cart</button>
                                     </figure>
                                     <figcaption>
                                         <h3>${book.title}</h3>
@@ -431,205 +403,7 @@
 		</div>
 	</section>
 
-	<section id="subscribe">
-		<div class="container">
-			<div class="row justify-content-center">
 
-				<div class="col-md-8">
-					<div class="row">
-
-						<div class="col-md-6">
-
-							<div class="title-element">
-								<h2 class="section-title divider">Subscribe to our newsletter</h2>
-							</div>
-
-						</div>
-						<div class="col-md-6">
-
-							<div class="subscribe-content" data-aos="fade-up">
-								<p>Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur. Elit
-									adipiscing enim pharetra hac.</p>
-								<form id="form">
-									<input type="text" name="email" placeholder="Enter your email addresss here">
-									<button class="btn-subscribe">
-										<span>send</span>
-										<i class="icon icon-send"></i>
-									</button>
-								</form>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
-	<section id="latest-blog" class="py-5 my-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-
-					<div class="section-header align-center">
-						<div class="title">
-							<span>Read our articles</span>
-						</div>
-						<h2 class="section-title">Latest Articles</h2>
-					</div>
-
-					<div class="row">
-
-						<div class="col-md-4">
-
-							<article class="column" data-aos="fade-up">
-
-								<figure>
-									<a href="#" class="image-hvr-effect">
-										<img src="images/post-img1.jpg" alt="post" class="post-image">
-									</a>
-								</figure>
-
-								<div class="post-item">
-									<div class="meta-date">Mar 30, 2021</div>
-									<h3><a href="#">Reading books always makes the moments happy</a></h3>
-
-									<div class="links-element">
-										<div class="categories">inspiration</div>
-										<div class="social-links">
-											<ul>
-												<li>
-													<a href="#"><i class="icon icon-facebook"></i></a>
-												</li>
-												<li>
-													<a href="#"><i class="icon icon-twitter"></i></a>
-												</li>
-												<li>
-													<a href="#"><i class="icon icon-behance-square"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div><!--links-element-->
-
-								</div>
-							</article>
-
-						</div>
-						<div class="col-md-4">
-
-							<article class="column" data-aos="fade-up" data-aos-delay="200">
-								<figure>
-									<a href="#" class="image-hvr-effect">
-										<img src="images/post-img2.jpg" alt="post" class="post-image">
-									</a>
-								</figure>
-								<div class="post-item">
-									<div class="meta-date">Mar 29, 2021</div>
-									<h3><a href="#">Reading books always makes the moments happy</a></h3>
-
-									<div class="links-element">
-										<div class="categories">inspiration</div>
-										<div class="social-links">
-											<ul>
-												<li>
-													<a href="#"><i class="icon icon-facebook"></i></a>
-												</li>
-												<li>
-													<a href="#"><i class="icon icon-twitter"></i></a>
-												</li>
-												<li>
-													<a href="#"><i class="icon icon-behance-square"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div><!--links-element-->
-
-								</div>
-							</article>
-
-						</div>
-						<div class="col-md-4">
-
-							<article class="column" data-aos="fade-up" data-aos-delay="400">
-								<figure>
-									<a href="#" class="image-hvr-effect">
-										<img src="images/post-img3.jpg" alt="post" class="post-image">
-									</a>
-								</figure>
-								<div class="post-item">
-									<div class="meta-date">Feb 27, 2021</div>
-									<h3><a href="#">Reading books always makes the moments happy</a></h3>
-
-									<div class="links-element">
-										<div class="categories">inspiration</div>
-										<div class="social-links">
-											<ul>
-												<li>
-													<a href="#"><i class="icon icon-facebook"></i></a>
-												</li>
-												<li>
-													<a href="#"><i class="icon icon-twitter"></i></a>
-												</li>
-												<li>
-													<a href="#"><i class="icon icon-behance-square"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div><!--links-element-->
-
-								</div>
-							</article>
-
-						</div>
-
-					</div>
-
-					<div class="row">
-
-						<div class="btn-wrap align-center">
-							<a href="#" class="btn btn-outline-accent btn-accent-arrow" tabindex="0">Read All Articles<i
-									class="icon icon-ns-arrow-right"></i></a>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section id="download-app" class="leaf-pattern-overlay">
-		<div class="corner-pattern-overlay"></div>
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-8">
-					<div class="row">
-
-						<div class="col-md-5">
-							<figure>
-								<img src="images/device.png" alt="phone" class="single-image">
-							</figure>
-						</div>
-
-						<div class="col-md-7">
-							<div class="app-info">
-								<h2 class="section-title divider">Download our app now !</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus
-									liberolectus nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna.
-									Adipiscing fames semper erat ac in suspendisse iaculis.</p>
-								<div class="google-app">
-									<img src="images/google-play.jpg" alt="google play">
-									<img src="images/app-store.jpg" alt="app store">
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<footer id="footer">
 		<div class="container">
@@ -791,6 +565,7 @@
 		crossorigin="anonymous"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/script.js"></script>
+	<script src = "js/addToCart.js"></script>
 
 </body>
 

@@ -43,12 +43,6 @@ public class LoginServlet extends HttpServlet {
         	session.setAttribute("password", password);
         	session.setMaxInactiveInterval(3600);
         	
-        	Cookie emailOrUserNameCookie = new Cookie("emailOrUserName", emailOrUserName);
-        	Cookie passwordCookie = new Cookie("password", password);
-        	emailOrUserNameCookie.setMaxAge(120);
-        	passwordCookie.setMaxAge(120);
-        	response.addCookie(emailOrUserNameCookie);
-        	response.addCookie(passwordCookie);
         	
         	response.sendRedirect("loginSuccess.html");
         } else {

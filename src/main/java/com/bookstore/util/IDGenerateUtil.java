@@ -24,5 +24,16 @@ public class IDGenerateUtil {
 
 		return bookId;
 	}
+	
+	public static String generateCartId() {
+		String cartId = null;
+
+		SimpleDateFormat date = new SimpleDateFormat("mmSSSyyyyMMdd");
+		cartId = date.format(new Date()) + (int)(Math.random()*1000);
+		cartId = "CA" + cartId;
+
+		return cartId;
+	}
+	
 
 }

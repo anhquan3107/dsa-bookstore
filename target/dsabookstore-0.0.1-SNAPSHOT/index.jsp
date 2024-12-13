@@ -311,7 +311,7 @@
                                 <div class="product-item">
                                     <figure class="product-style">
                                         <img src="${book.bookImage}" alt="Books" class="product-item">
-                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+                                        <button type="button" class="add-to-cart" data-book-id="${book.bookId}" data-book-price="${book.price}">Add to Cart</button>
                                     </figure>
                                     <figcaption>
                                         <h3>${book.title}</h3>
