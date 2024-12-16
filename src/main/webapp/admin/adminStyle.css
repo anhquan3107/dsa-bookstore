@@ -1,0 +1,10 @@
+.bg-taocustom{
+	background-color:#d58395;
+}
+
+.navbar .nav-item:hover .nav-link {
+	background-color: white;
+	color: blue;
+	border-radius: 25px;
+	
+}
