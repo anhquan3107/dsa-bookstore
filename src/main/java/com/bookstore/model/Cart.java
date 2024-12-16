@@ -1,6 +1,5 @@
 package com.bookstore.model;
 
-import java.util.Map;
 
 public class Cart {
 		private String userId;

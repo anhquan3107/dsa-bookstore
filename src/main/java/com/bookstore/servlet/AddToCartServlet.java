@@ -1,8 +1,6 @@
 package com.bookstore.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bookstore.daoimpl.BookDaoImpl;
 import com.bookstore.daoimpl.ProductDaoImpl;
 import com.bookstore.model.Users;
-import com.bookstore.util.IDGenerateUtil;
 
 /**
  * Servlet implementation class AddToCartServlet
@@ -38,6 +36,7 @@ public class AddToCartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		ProductDaoImpl cartService = new ProductDaoImpl();
+        BookDaoImpl bookService = new BookDaoImpl();
 
         Users userinfo = (Users) session.getAttribute("userinfo");
         if (userinfo == null) {
@@ -67,10 +66,17 @@ public class AddToCartServlet extends HttpServlet {
         }
 
 
-        int totalItems = cart.values().stream().mapToInt(Integer::intValue).sum();
-        double totalPrice = cart.entrySet().stream()
-                                .mapToDouble(entry -> entry.getValue() * bookPrice)
-                                .sum();
+        double totalPrice = 0.0;
+        int totalItems = 0;
+
+        for (Map.Entry<String, Integer> entry : cart.entrySet()) {
+            bookID = entry.getKey();
+            int quantity = entry.getValue();
+
+            bookPrice = bookService.getBookPrice(bookID);
+            totalPrice += bookPrice * quantity;
+            totalItems += quantity;
+        }
         response.setContentType("application/json");
         response.getWriter().write("{\"totalItems\":" + totalItems + ", \"totalPrice\":" + totalPrice + "}");
 	}
