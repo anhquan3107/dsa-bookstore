@@ -2,25 +2,14 @@ package com.bookstore.model;
 
 
 public class Cart {
-		private String userId;
-		private String bookId;
 		private int quantity;
-		public Cart(String userId, String bookId, int quantity) {
-			this.userId = userId;
-			this.bookId = bookId;
+		private Books book;
+		public Cart(){
+			
+		}
+		public Cart(int quantity, Books book) {
 			this.quantity = quantity;
-		}
-		public String getUserId() {
-			return userId;
-		}
-		public void setUserId(String userId) {
-			this.userId = userId;
-		}
-		public String getBookId() {
-			return bookId;
-		}
-		public void setBookId(String bookId) {
-			this.bookId = bookId;
+			this.book = book;
 		}
 		public int getQuantity() {
 			return quantity;
@@ -28,6 +17,11 @@ public class Cart {
 		public void setQuantity(int quantity) {
 			this.quantity = quantity;
 		}
-
+		public Books getBook() {
+			return book;
+		}
+		public void setBook(Books book) {
+			this.book = book;
+		}
 }
 

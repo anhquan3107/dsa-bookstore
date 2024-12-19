@@ -10,7 +10,6 @@ com/bookstore/model/Users.class
 com/bookstore/daoimpl/ProductDaoImpl.class
 com/bookstore/model/Admin.class
 com/bookstore/servlet/AddToCartServlet.class
-com/bookstore/servlet/UserProfileServlet.class
 com/bookstore/servlet/HomeServlet.class
 com/bookstore/servlet/SignupServlet.class
 com/bookstore/servlet/CartHomeServlet.class

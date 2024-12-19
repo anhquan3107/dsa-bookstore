@@ -1,7 +1,6 @@
 package com.bookstore.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 
 import javax.servlet.ServletException;
@@ -24,7 +23,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("text/html; charset=UTF-8");
-        PrintWriter output = response.getWriter();
+        
         boolean status;
         String emailOrUserName = request.getParameter("emailOrUserName").trim();
         String password = request.getParameter("passwordLogin").trim();

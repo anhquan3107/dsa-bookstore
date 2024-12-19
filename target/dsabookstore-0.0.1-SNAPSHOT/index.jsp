@@ -60,7 +60,7 @@
 					<c:choose>
                 <c:when test="${not empty sessionScope.userinfo}">
                     <!-- User is logged in, show cart -->
-                    <a href="cart.jsp" class="cart for-buy">
+                    <a href="ViewCartServlet" class="cart for-buy">
                         <i class="icon icon-clipboard"></i>
                         <span id="cartInfo">
                             Cart: 

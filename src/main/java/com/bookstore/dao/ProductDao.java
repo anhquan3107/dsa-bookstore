@@ -1,6 +1,9 @@
 package com.bookstore.dao;
 
+import java.util.List;
 import java.util.Map;
+
+import com.bookstore.model.Cart;
 
 public interface ProductDao {
 
@@ -14,6 +17,6 @@ public interface ProductDao {
 	
 	public Map<String, Integer> getCartItems(String userID);
 	
-	
+	public List<Cart> getCartsAsList(String userID);
 	
 }

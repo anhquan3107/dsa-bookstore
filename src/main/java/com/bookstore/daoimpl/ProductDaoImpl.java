@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.bookstore.dao.ProductDao;
+import com.bookstore.model.Books;
+import com.bookstore.model.Cart;
 import com.bookstore.util.DBUtil;
 import com.bookstore.util.IDGenerateUtil;
 
@@ -135,6 +139,43 @@ public class ProductDaoImpl implements ProductDao {
 		    }
 
 		    return cart;	
-}
+	}
+    public List<Cart> getCartsAsList(String userId) {
+        List<Cart> cartList = new ArrayList<>();
+		String query = "SELECT c.book_ID, c.quantity, b.title, b.price, b.author, b.coverImage, b.description FROM UserCart c JOIN Books b ON c.book_ID = b.book_ID WHERE c.user_ID = ?";
+
+        Connection con = DBUtil.openConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement(query);
+			ps.setString(1, userId);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				Books book = new Books();
+				book.setBookId(rs.getString("book_ID"));
+				book.setAuthor(rs.getString("author"));
+				book.setPrice(rs.getFloat("price"));
+				book.setBookImage(rs.getString("coverImage"));
+				book.setTitle(rs.getString("title"));
+				book.setDescription(rs.getString("description"));
+				int quantity = rs.getInt("quantity");
+				Cart cart = new Cart(quantity, book);		
+				cartList.add(cart);
+			}
+
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			DBUtil.closeConnection(rs);
+			DBUtil.closeConnection(ps);
+			DBUtil.closeConnection(con);
+		}
+        return cartList;
+    }
+
+
 
 }
