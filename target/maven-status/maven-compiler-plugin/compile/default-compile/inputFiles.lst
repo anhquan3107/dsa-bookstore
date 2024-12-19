@@ -1,12 +1,14 @@
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\dao\UserDao.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\dao\BookDao.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\servlet\UserProfileServlet.java
+C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\servlet\AddBooksServlet.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\model\Users.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\util\IDGenerateUtil.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\servlet\HomeServlet.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\model\Orders.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\model\Transactions.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\servlet\LoginServlet.java
+C:\Users\DELL\git\dsa-bookstore\src\main\java\AdminBookDao.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\daoimpl\UserDaoImpl.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\model\Cart.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\servlet\LogoutServlet.java
@@ -16,3 +18,4 @@ C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\model\Admin.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\util\DBUtil.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\model\Books.java
 C:\Users\DELL\git\dsa-bookstore\src\main\java\com\bookstore\daoimpl\BookDaoImpl.java
+C:\Users\DELL\git\dsa-bookstore\src\main\java\AdminBookDaoImpl.java

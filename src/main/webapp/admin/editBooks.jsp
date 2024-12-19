@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page isELIgnored="false"%>
+<%@ page import="Admin.AdminBookDaoImpl"%>
+<%@ page import="Admin.AdminBookDao"%>
+<%@ page import="com.bookstore.util.DBUtil"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.bookstore.model.Books"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +24,7 @@
 					<div class="card-body"></div>
 
 
-					<h4 class="text-center">Add Books</h4>
+					<h4 class="text-center">Edit Books</h4>
 
 					<c:if test="${not empty succMsg}">
 						<p class="text-center text-success">${succMsg}</p>
@@ -33,45 +38,43 @@
 						<!-- Remove the message after it is displayed -->
 					</c:if>
 
+					<%
+					String id = request.getParameter("id"); // Ensure this matches the parameter name in the URL
+					AdminBookDaoImpl dao = new AdminBookDaoImpl();
+					Books b = dao.getBookById(id);
+					%>
 
+					<form action="../editbooks" method="post">
+						<input type = "hidden" name = "id" value="<%=b.getBookId() %>">
 
-					<form action="${pageContext.request.contextPath}/AddBooksServlet"
-						method="post" enctype="multipart/form-data">
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">Book Name</label> <input
 								name="bname" type="text" class="form-control"
-								id="exampleInputEmail1" aria-describedby="emailHelp">
+								id="exampleInputEmail1" aria-describedby="emailHelp"
+								value="<%=b.getTitle()%>">
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">Author Name</label> <input
 								name="author" type="text" class="form-control"
-								id="exampleInputEmail1" aria-describedby="emailHelp">
+								id="exampleInputEmail1" aria-describedby="emailHelp"
+								value="<%=b.getAuthor()%>">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">Price</label> <input
 								name="price" type="number" class="form-control"
-								id="exampleInputPassword1">
+								id="exampleInputPassword1" value="<%=b.getPrice()%>">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Description</label> <input
 								name="bdes" type="text" class="form-control"
-								id="exampleInputEmail1" aria-describedby="emailHelp">
+								id="exampleInputEmail1" aria-describedby="emailHelp"
+								value="<%=b.getDescription()%>">
 						</div>
 
-
-						<div class="form-group">
-							<label for="exampleFormControlFile1">Enter Image Path</label> <input
-								name="bimg" type="text" class="form-control"
-								id="exampleFormControlFile1"
-								placeholder="Enter image path or URL">
-						</div>
-		
-
-						<button type="submit" class="btn btn-primary">Add</button>
+						<button type="submit" class="btn btn-primary">Edit</button>
 					</form>
-
 				</div>
 			</div>
 		</div>

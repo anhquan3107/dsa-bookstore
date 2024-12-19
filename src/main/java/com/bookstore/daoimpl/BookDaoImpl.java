@@ -12,32 +12,33 @@ import com.bookstore.model.Books;
 import com.bookstore.util.DBUtil;
 
 public class BookDaoImpl implements BookDao {
-	public List<Books> getRandomBooks(int limit){
-        List<Books> books = new ArrayList<>();
-        String query = "SELECT * FROM Books ORDER BY NEWID() OFFSET 0 ROWS FETCH NEXT ? ROWS ONLY";
-        
-        try (Connection connection = DBUtil.openConnection();
-             PreparedStatement ps = connection.prepareStatement(query)) {
+	@Override
+	public List<Books> getRandomBooks(int limit) {
+		List<Books> books = new ArrayList<>();
+		String query = "SELECT * FROM Books ORDER BY NEWID() OFFSET 0 ROWS FETCH NEXT ? ROWS ONLY";
 
-            ps.setInt(1, limit); 
+		try (Connection connection = DBUtil.openConnection();
+				PreparedStatement ps = connection.prepareStatement(query)) {
 
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    Books book = new Books();
-                    book.setBookId(rs.getString("book_ID"));
-                    book.setAuthor(rs.getString("author"));
-                    book.setPrice(rs.getFloat("price"));
-                    book.setBookImage(rs.getString("coverImage"));
-                    book.setTitle(rs.getString("title"));
-                    book.setDescription(rs.getString("description"));
-                    books.add(book);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+			ps.setInt(1, limit);
 
-        return books;
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					Books book = new Books();
+					book.setBookId(rs.getString("book_ID"));
+					book.setAuthor(rs.getString("author"));
+					book.setPrice(rs.getDouble("price"));
+					book.setBookImage(rs.getString("coverImage"));
+					book.setTitle(rs.getString("title"));
+					book.setDescription(rs.getString("description"));
+					books.add(book);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return books;
 	}
 
 	@Override
@@ -45,23 +46,24 @@ public class BookDaoImpl implements BookDao {
 		List<Books> allBooks = new ArrayList<>();
 		String query = "SELECT * FROM Books ORDER BY title";
 		try (Connection connection = DBUtil.openConnection();
-	             PreparedStatement ps = connection.prepareStatement(query)) { 
-	            try (ResultSet rs = ps.executeQuery()) {
-	                while (rs.next()) {
-	                    Books book = new Books();
-	                    book.setBookId(rs.getString("book_ID"));
-	                    book.setAuthor(rs.getString("author"));
-	                    book.setPrice(rs.getFloat("price"));
-	                    book.setBookImage(rs.getString("coverImage"));
-	                    book.setTitle(rs.getString("title"));
-	                    book.setDescription(rs.getString("description"));
-	                    allBooks.add(book);
-	                }
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
+				PreparedStatement ps = connection.prepareStatement(query)) {
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					Books book = new Books();
+					book.setBookId(rs.getString("book_ID"));
+					book.setAuthor(rs.getString("author"));
+					book.setPrice(rs.getFloat("price"));
+					book.setBookImage(rs.getString("coverImage"));
+					book.setTitle(rs.getString("title"));
+					book.setDescription(rs.getString("description"));
+					allBooks.add(book);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-	        return allBooks;
+		return allBooks;
 	}
 }
+
