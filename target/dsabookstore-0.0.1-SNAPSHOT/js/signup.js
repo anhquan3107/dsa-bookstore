@@ -109,7 +109,6 @@ form.addEventListener("submit", (e) => {
   createPass();
   confirmPass();
 
-  // If all fields are valid, submit form
   if (
     !nameField.classList.contains("invalid") &&
     !usernameField.classList.contains("invalid") &&

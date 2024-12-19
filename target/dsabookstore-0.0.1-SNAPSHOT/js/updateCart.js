@@ -11,13 +11,13 @@ function updateCart(bookId, action) {
     .then(data => {
         if (data.success) {
             if (action === "delete") {
-                // Remove the cart item from the table
+                
                 document.getElementById(`cart-item-${bookId}`).remove();
             } else {
-                // Update the quantity and total price
+                
                 document.getElementById(`quantity-${bookId}`).textContent = data.newQuantity;
             }
-            // Update total price
+            
             document.getElementById("total-price").textContent = `$ ${data.totalPrice.toFixed(2)}`;
         } else {
             alert("Failed to update cart: " + data.message);
@@ -31,7 +31,7 @@ function updateCart(bookId, action) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // For quantity increment and decrement buttons
+    
     document.querySelectorAll(".quantity-btn").forEach(button => {
         button.addEventListener("click", function () {
             const bookId = this.getAttribute("data-book-id");

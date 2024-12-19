@@ -17,6 +17,7 @@
 /Users/trananhquanphan/Documents/IU/Semester3/Java/dsabookstore/src/main/java/com/bookstore/dao/ProductDao.java
 /Users/trananhquanphan/Documents/IU/Semester3/Java/dsabookstore/src/main/java/com/bookstore/daoimpl/CartDaoImpl.java
 /Users/trananhquanphan/Documents/IU/Semester3/Java/dsabookstore/src/main/java/com/bookstore/dao/BookDao.java
+/Users/trananhquanphan/Documents/IU/Semester3/Java/dsabookstore/src/main/java/com/bookstore/util/EmailUtil.java
 /Users/trananhquanphan/Documents/IU/Semester3/Java/dsabookstore/src/main/java/com/bookstore/model/Cart.java
 /Users/trananhquanphan/Documents/IU/Semester3/Java/dsabookstore/src/main/java/com/bookstore/servlet/ShippingServlet.java
 /Users/trananhquanphan/Documents/IU/Semester3/Java/dsabookstore/src/main/java/com/bookstore/dao/CartDao.java

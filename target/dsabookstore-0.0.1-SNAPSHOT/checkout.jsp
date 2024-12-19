@@ -79,11 +79,12 @@
 
           
           <hr class="mb-4">
-          
+          <form action="ConfirmOrderServlet" method="POST">
           <div class="d-grid gap-2">
             <button class="btn btn-primary btn-lg" type="button">
               Confirm order
             </button>
+          </form>
           </div>
           
         </div>
