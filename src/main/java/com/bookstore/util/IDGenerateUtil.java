@@ -34,6 +34,14 @@ public class IDGenerateUtil {
 
 		return cartId;
 	}
-	
+	public static String generateOrderId() {
+		String orderId = null;
+
+		SimpleDateFormat date = new SimpleDateFormat("mmSSSyyyyMMdd");
+		orderId = date.format(new Date()) + (int)(Math.random()*1000);
+		orderId = "ORD" + orderId;
+
+		return orderId;
+	}
 
 }

@@ -43,6 +43,7 @@ public class ShippingServlet extends HttpServlet {
             response.getWriter().write("Please provide a district.");
             return;
         }
+        session.setAttribute("userDistrict", userDistrict);
         int sourceIndex = 0;
         int targetIndex = ShippingUtil.findDistrictIndex(userDistrict);
         if (targetIndex == -1) {
@@ -51,8 +52,11 @@ public class ShippingServlet extends HttpServlet {
         }
         double totalPrice = (Double)session.getAttribute("totalPrice");
         int shippingDistance = ShippingUtil.dijkstra(sourceIndex, targetIndex);
+        session.setAttribute("shippingDistance", shippingDistance);
         double shippingFee = ShippingUtil.calculateFee(shippingDistance);
+        session.setAttribute("shippingFee", shippingFee);
         double finalPrice = totalPrice + shippingFee;
+        session.setAttribute("finalPrice", finalPrice);
         response.setContentType("application/json");
         response.getWriter().write("{\"shippingFee\":" + shippingFee + ", \"finalPrice\":" + finalPrice + "}");
 

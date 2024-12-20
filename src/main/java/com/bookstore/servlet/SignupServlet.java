@@ -34,6 +34,7 @@ public class SignupServlet extends HttpServlet {
         String address = request.getParameter("address");
         String password = request.getParameter("password");
         
+        @SuppressWarnings("unused")
         String status = "";
         Users user = new Users(username, password, fullName, email, phone, address);
         UserDaoImpl userSignUp = new UserDaoImpl();

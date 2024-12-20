@@ -1,29 +1,32 @@
 package com.bookstore.model;
 
-import java.util.List;
-
 public class Orders {
 	    private String orderId;
 	    private String userId;
-	    private int totalBook;  // Total number of books in the order
+	    private int totalBook;  
 	    private double totalPrice;
 	    private String status;
+		private int shippingDistance;
 	
-	    // Relationships
-	    private Users user;  // The user who placed the order
-	    private List<Books> books;  // List of books in the order
+
 	    
-	    public Orders() {
+
+		public Orders() {
 	    	
 	    }
-		public Orders(String orderId, int totalBook, double totalPrice, String status, Users user, List<Books> books, String userId) {
+		public Orders(String orderId, int totalBook, double totalPrice, String status, String userId, int shippingDistance) {
 			this.userId = userId;
 			this.orderId = orderId;
 			this.totalBook = totalBook;
 			this.totalPrice = totalPrice;
 			this.status = status;
-			this.user = user;
-			this.books = books;
+			this.shippingDistance = shippingDistance;
+		}
+		public int getShippingDistance() {
+			return shippingDistance;
+		}
+		public void setShippingDistance(int shippingDistance) {
+			this.shippingDistance = shippingDistance;
 		}
 		public String getOrderId() {
 			return orderId;
@@ -54,18 +57,6 @@ public class Orders {
 		}
 		public void setStatus(String status) {
 			this.status = status;
-		}
-		public Users getUser() {
-			return user;
-		}
-		public void setUser(Users user) {
-			this.user = user;
-		}
-		public List<Books> getBooks() {
-			return books;
-		}
-		public void setBooks(List<Books> books) {
-			this.books = books;
 		}
 
 	
