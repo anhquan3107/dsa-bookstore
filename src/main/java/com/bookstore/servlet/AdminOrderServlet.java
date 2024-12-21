@@ -20,7 +20,7 @@ import com.bookstore.model.Orders;
 @WebServlet("/AdminOrderServlet")
 public class AdminOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,10 +35,29 @@ public class AdminOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
         AdminOrderDaoImpl orderDao = new AdminOrderDaoImpl();
-        List<Orders> orders = orderDao.getAllOrders();
-
-        request.setAttribute("ordersList", orders);
+		String action = request.getParameter("action");
+		if ("shipOrder".equals(action)) {
+			String orderId = request.getParameter("orderId");
+			List<Orders> prioritizedOrders = orderDao.getPrioritizedOrders();
+	
+			Orders orderToShip = null;
+			for (Orders order : prioritizedOrders) {
+				if (order.getOrderId().equals(orderId)) {
+					orderToShip = order;
+					break;
+				}
+			}
+	
+			if (orderToShip != null) {
+				
+				orderToShip.setStatus("Shipped");
+				orderDao.updateOrderStatus(orderToShip);
+			}
+		}
+        List<Orders> prioritizedOrders = orderDao.getPrioritizedOrders();
+        request.setAttribute("ordersList", prioritizedOrders);
         request.getRequestDispatcher("admin/orderMana.jsp").forward(request, response);
+		
 	}
 
 	/**

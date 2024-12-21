@@ -78,12 +78,27 @@ public class ShippingUtil {
     }
     public static double calculateFee(int shippingDistance){
         double shippingFee = 0;
-        if(shippingDistance <= 3){
-            shippingFee = shippingDistance * 1.5 + 1;
+
+        if (shippingDistance <= 3) {
+            shippingFee = 10;  
+        } 
+        else if (shippingDistance <= 10) {
+            shippingFee = 15 + (shippingDistance - 3) * 1.3;  
         }
-        else{
-            shippingFee = shippingDistance * 1.3;
+        else if (shippingDistance <= 20) {
+            shippingFee = 25 + (shippingDistance - 10) * 1.5;  
         }
+        else {
+            shippingFee = 50 + (shippingDistance - 20) * 2.0;  
+        }
+    
         return shippingFee;
     }
+    public static double calculatePriorityScore(int shippingDistance, int quantity) {
+		
+		double distanceFactor = 1.0 / (shippingDistance + 1);  		
+		double quantityFactor = quantity * 0.1;  
+		double priorityScore = (distanceFactor * 10) + (quantityFactor); 		
+		return priorityScore;
+	}
 }
