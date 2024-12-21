@@ -51,27 +51,27 @@ public class ShippingUtil {
         pq.add(new int[] { source, 0 });
 
         while (!pq.isEmpty()) {
-        int[] current = pq.poll();
-        int currentNode = current[0];
-        int currentDist = current[1];
+            int[] current = pq.poll();
+            int currentNode = current[0];
+            int currentDist = current[1];
 
-        if (visited[currentNode]) continue;
-        visited[currentNode] = true;
+            if (visited[currentNode]) continue;
+            visited[currentNode] = true;
 
-        
+            
 
-        if (currentNode == target) return currentDist;
+            if (currentNode == target) return currentDist;
 
-        for (int neighbor = 0; neighbor < n; neighbor++) {
-            if (!visited[neighbor] && districtsMatrix[currentNode][neighbor] > 0) {
-                int newDist = currentDist + districtsMatrix[currentNode][neighbor];
-                if (newDist < dist[neighbor]) {
-                    dist[neighbor] = newDist;
-                    pq.add(new int[] { neighbor, newDist });
-                    
+            for (int neighbor = 0; neighbor < n; neighbor++) {
+                if (!visited[neighbor] && districtsMatrix[currentNode][neighbor] > 0) {
+                    int newDist = currentDist + districtsMatrix[currentNode][neighbor];
+                    if (newDist < dist[neighbor]) {
+                        dist[neighbor] = newDist;
+                        pq.add(new int[] { neighbor, newDist });
+                        
+                    }
                 }
-            }
-     }
+        }
 }
 
         return dist[target];

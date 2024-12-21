@@ -73,5 +73,10 @@
 		    <artifactId>javax.servlet.jsp-api</artifactId>
 		    <version>2.3.3</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>bookstore</groupId>
+			<artifactId>dsafinal</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+  </dependencies>
 </project>

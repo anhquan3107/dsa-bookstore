@@ -1,0 +1,19 @@
+
+.home-link {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 1000;  /* Ensure it's above other elements */
+  }
+  .home-link a {
+    color: #c7b198;
+    text-decoration: none;
+  }
+  
+  .home-link a:hover {
+    text-decoration: underline;
+  }
+
+

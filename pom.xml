@@ -87,5 +87,5 @@
 				<artifactId>json</artifactId>
 				<version>20231013</version>
     		</dependency>
-	</dependencies>
+  </dependencies>
 </project>

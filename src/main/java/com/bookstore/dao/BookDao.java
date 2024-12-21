@@ -7,4 +7,5 @@ public interface BookDao {
 	public List<Books> getRandomBooks(int limit);
 	public List<Books> getAllBooks();
 	public double getBookPrice(String bookID);
+	public Books getBookById(String bookID);
 }
