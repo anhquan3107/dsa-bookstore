@@ -50,11 +50,11 @@ public class SearchServlet extends HttpServlet {
         JSONObject jsonResponse = new JSONObject();
 
         if (prefix != null && !prefix.isEmpty()) {
-            // Perform prefix search
+            
             List<String> bookIds = trie.autocomplete(prefix.toLowerCase());
             JSONArray suggestions = new JSONArray();
 
-            // Fetch book details for each matched ID and add them to the suggestions array
+
             BookDaoImpl bookService = new BookDaoImpl();
             for (String bookId : bookIds) {
                 Books book = bookService.getBookById(bookId);
@@ -75,7 +75,6 @@ public class SearchServlet extends HttpServlet {
             jsonResponse.put("message", "Prefix is empty or not provided.");
         }
 
-        // Set response type and send JSON data
         response.setContentType("application/json");
         response.getWriter().write(jsonResponse.toString());	
 	}

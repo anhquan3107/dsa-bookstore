@@ -57,11 +57,7 @@ public class ShippingUtil {
 
             if (visited[currentNode]) continue;
             visited[currentNode] = true;
-
-            
-
             if (currentNode == target) return currentDist;
-
             for (int neighbor = 0; neighbor < n; neighbor++) {
                 if (!visited[neighbor] && districtsMatrix[currentNode][neighbor] > 0) {
                     int newDist = currentDist + districtsMatrix[currentNode][neighbor];
