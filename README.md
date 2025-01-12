@@ -1,4 +1,4 @@
-<img width="1512" alt="Screenshot 2024-12-22 at 21 16 38" src="https://github.com/user-attachments/assets/bb023d8c-c498-4346-859f-a6580093a02c" />
+
 # Online Book Shopping System
 
 This project implements an **Online Book Shopping Website** that leverages **data structures and algorithms** to enhance user experience, efficiency, and scalability. Built as part of the **Data Structures and Algorithms course (IT013IU)**, the system showcases how theoretical concepts can be applied to real-world problems.
